@@ -1,11 +1,13 @@
 <script>
-	export let name;
+	// just import a component to use it
+	import CHeader from './components/CHeader.svelte'
+	import CMain from './components/CMain.svelte'
 </script>
 
-<style>
-	h1 {
-		color: purple;
-	}
-</style>
+<div>
+	<CHeader />
 
-<h1>Hello {name}!</h1>
+	<div class="container">
+		<CMain />
+	</div>
+</div>
