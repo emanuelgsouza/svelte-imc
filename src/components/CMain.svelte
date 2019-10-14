@@ -1,12 +1,16 @@
 <script>
   import CInput from './CInput.svelte'
   import CMessage from './CMessage.svelte'
-  import { formatNumber } from '../utils'
+  import CRadioGroup from './CRadioGroup.svelte'
+  import { calculateImc } from '../utils'
 
+  // component data
   let imc = 0
   let height = 0
   let weight = 0
+  let genre = 'M'
 
+  // component methods
   const setHeight = ({ detail }) => {
     height = detail
   }
@@ -16,11 +20,20 @@
   }
 
   const handleClick = () => {
-    imc = weight / (height * height)
+    imc = calculateImc(weight, height)
+  }
+
+  const setGenre = ({ detail }) => {
+    genre = detail
   }
 </script>
 
 <main class="section">
+  <CRadioGroup
+    label="Select the genre"
+    on:value={setGenre}
+  />
+
   <CInput
     id="weight"
     label="Weight"
@@ -41,6 +54,6 @@
   {#if imc > 0}
     <hr />
 
-    <CMessage {imc} />
+    <CMessage {imc} {genre} />
   {/if}
 </main>

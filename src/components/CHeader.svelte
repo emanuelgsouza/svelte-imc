@@ -1,5 +1,5 @@
 <script>
-export let title = 'Svelte IMC'
+export let title = 'Svelte IMC App'
 </script>
 
 <header class="hero is-primary">
